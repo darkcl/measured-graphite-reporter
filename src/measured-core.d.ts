@@ -44,20 +44,28 @@ declare module 'measured-core' {
     sample?: any;
   }
 
+  interface Gauge {}
+
+  interface Timer {}
+
+  interface Meter {}
+
+  interface SettableGauge {}
+
   interface Collection {
     register(name, metric);
 
-    gauge(name: string, readFn: Function): any;
+    gauge(name: string, readFn: Function): Gauge;
 
-    counter(name: string, properties: CounterProperties): Counter;
+    counter(name: string, properties?: CounterProperties): Counter;
 
-    histogram(name: string, properties: HistogramProperties): Histogram;
+    histogram(name: string, properties?: HistogramProperties): Histogram;
 
-    timer(name: string, properties): any;
+    timer(name: string, properties): Timer;
 
-    meter(name: string, properties): any;
+    meter(name: string, properties): Meter;
 
-    settableGauge(name: string, properties): any;
+    settableGauge(name: string, properties): SettableGauge;
 
     cachedGauge(
       name: string,
