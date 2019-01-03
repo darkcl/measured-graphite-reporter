@@ -1,7 +1,11 @@
 import { EventEmitter } from 'events';
 
+import * as measured from 'measured-core';
+
 export class Reporter extends EventEmitter {
-  private interval: NodeJS.Timeout;
+  private interval: NodeJS.Timeout | any = null;
+
+  private stat = measured.createCollection(null);
 
   /**
    * Creates an instance of Reporter.
@@ -10,16 +14,19 @@ export class Reporter extends EventEmitter {
    */
   constructor(private reportInterval: number = 6000) {
     super();
+  }
+
+  public start() {
     this.interval = setInterval(() => {
       this.report();
     }, this.reportInterval);
   }
 
-  start() {}
-
-  stop() {
+  public stop() {
     clearInterval(this.interval);
   }
 
-  report() {}
+  public report() {
+    return this.stat.toJSON();
+  }
 }
