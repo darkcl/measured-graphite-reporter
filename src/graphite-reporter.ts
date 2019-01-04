@@ -49,6 +49,13 @@ export class GraphiteReporter extends Reporter {
     );
   }
 
+  stop() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+    this.socket.end();
+  }
+
   public report() {
     if (this.reconnecting) return;
     const timestamp = Date.now() / 1000;

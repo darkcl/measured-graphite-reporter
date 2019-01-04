@@ -7,6 +7,7 @@ export declare class GraphiteReporter extends Reporter {
   private reconnecting;
   constructor(interval?: number, host?: string, port?: string, prefix?: string);
   start(): void;
+  stop(): void;
   report(): void;
   private send;
   reportGauge(gauge: any, timestamp: any): void;
