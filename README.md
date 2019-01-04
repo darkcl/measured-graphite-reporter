@@ -31,7 +31,7 @@ reporter.logCount('my.awesome.event');
 reporter.logDuration('my.awesome.event', 1000);
 ```
 
-Use with decorator (TypeScript only)
+### Use with decorator (TypeScript only)
 
 ```ts
 import { GraphiteReporter, LogDuration, LogCount } from 'measured-graphite-reporter';
