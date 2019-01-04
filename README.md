@@ -1,6 +1,6 @@
 # measured-graphite-reporter
 
-Simple measured-core graphite reporter
+Simple [measured-core](https://github.com/yaorg/node-measured) graphite reporter
 
 ## Usage
 
