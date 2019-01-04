@@ -6,11 +6,12 @@ export class GraphiteReporter extends Reporter {
   private socket: Socket = new Socket();
   private reconnecting: boolean = false;
   constructor(
+    interval: number = 6000,
     private host: string = process.env.GRAPHITE_HOST || 'localhost',
     private port: string = process.env.GRAPHITE_PORT || '2003',
     private prefix: string = 'app'
   ) {
-    super();
+    super(interval);
   }
 
   public start() {
