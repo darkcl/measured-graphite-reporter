@@ -1,4 +1,4 @@
-# measured-graphite-reporter
+# [WIP] measured-graphite-reporter
 
 Simple [measured-core](https://github.com/yaorg/node-measured) graphite reporter
 
@@ -68,3 +68,8 @@ reporter.logCount('my.awesome.event');
 // Log Duration
 reporter.logDuration('my.awesome.event', 1000);
 ```
+
+## To-Do
+
+- [x] Support decorator
+- [ ] Log types of metrics
