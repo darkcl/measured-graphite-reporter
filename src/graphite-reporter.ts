@@ -90,7 +90,9 @@ export class GraphiteReporter extends Reporter {
 
   private send(name, value, timestamp) {
     if (this.reconnecting) return;
-    this.socket.write(`${this.prefix}.${name} ${value} ${timestamp}\n`);
+    if (value !== null && value !== undefined) {
+      this.socket.write(`${this.prefix}.${name} ${value} ${timestamp}\n`);
+    }
   }
 
   public reportGauge(gauge, timestamp) {
@@ -113,8 +115,6 @@ export class GraphiteReporter extends Reporter {
 
   public reportHistogram(histogram, timestamp) {
     if (histogram) {
-      // Report count separately as reportHistogramMetrics is also used by Timer.
-      this.send(`${histogram.name}.count`, histogram.count, timestamp);
       this.reportHistogramMetrics(histogram.name, histogram.toJSON(), timestamp);
     }
   }
